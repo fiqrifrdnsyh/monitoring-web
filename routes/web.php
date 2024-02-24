@@ -12,15 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Auth::routes();
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/admin-form', [App\Http\Controllers\FormController::class, 'index'])->name('admin-form');
+Route::post('/simpan-form', [App\Http\Controllers\FormController::class, 'simpanInput'])->name('simpan-form');
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

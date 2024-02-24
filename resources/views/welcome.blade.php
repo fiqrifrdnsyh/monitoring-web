@@ -269,39 +269,32 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10%">Kode Cabang</th>
-                                    <th style="width: 50%">Nama Cabang</th>
+                                    <th style="width: 30%">Nama Cabang</th>
                                     <th style="width: 10%">Ket Network</th>
-                                    <th style="width: 10%">Ket Pengambilan Sales</th>
+                                    <th style="width: 25%">Ket Pengambilan Sales</th>
                                     <th style="width: 10%">Tanggal</th>
                                     <th style="width: 10%">Jam</th>
+                                    <th style="width: 5%">SS</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach($keterangan as $kt)
                                 <tr>
-                                    <td>714</td>
-                                    <td>YOMART MM AHMAD YANI 2 GARUT</td>
-                                    <td>Down</td>
-                                    <td>FTP Failed</td>
-                                    <td>2021-07-12</td>
-                                    <td>00:12</td>
+                                    <td>{{$kt->kode}}</td>
+                                    <td>{{$kt->nama}}</td>
+                                    <td>{{$kt->ket_network}}</td>
+                                    <td>{{$kt->ket_pengambilan}}</td>
+                                    <td>{{ date('Y-M-d', strtotime($kt->tanggal_waktu)) }}</td>
+                                    <td>{{ date('H:i:s', strtotime($kt->tanggal_waktu)) }}</td>
+                                    <td>
+                                        @if($kt->ss)
+                                            <img src="{{ asset('pictures/'.$kt->ss) }}" alt="Picture" style="max-width: 100px; max-height: 100px;">
+                                        @else
+                                            No picture available
+                                        @endif
+                                    </td>
                                 </tr>
-                                <tr>
-                                    <td>685</td>
-                                    <td>YOMART XPRESS GRAND PANGANDARAN</td>
-                                    <td>UP</td>
-                                    <td>FTP Failed</td>
-                                    <td>2021-07-12</td>
-                                    <td>00:08</td>
-                                </tr>
-                                <tr>
-                                    <td>639</td>
-                                    <td>YOMART MM KOTA BATU BOGOR</td>
-                                    <td>UP</td>
-                                    <td>FTP Failed</td>
-                                    <td>2021-07-12</td>
-                                    <td>00:07</td>
-                                </tr>
-                                
+                                @endforeach
                             </tbody>
                             
                         </table>
