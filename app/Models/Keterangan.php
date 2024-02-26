@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keterangan extends Model
 {
-    protected $guarded = [];
+    protected $table = 'keterangans';
+    protected $fillable = ['kode_cabang','ket_network','ket_pengambilan','tanggal_waktu','ss'];
 }
+
+

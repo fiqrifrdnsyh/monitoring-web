@@ -47,7 +47,8 @@
 
                         <div class="card-body">
                             <h4>YOGYA - GRIYA - YOMART</h4>
-                            <form method="POST" action="/simpan-form">
+                            <form method="POST" action="/simpan-form" enctype="multipart/form-data">
+                            
                                 @csrf
                                 <div class="form-group">
                                     <label for="exampleSelectBorder">NAMA CABANG<code></code></label>
@@ -128,10 +129,11 @@
     $('#reservationdate').datetimepicker({
         format: 'L'
     });
-    //Date and time picker
+    // Date and time picker
     $('#reservationdatetime').datetimepicker({ 
-        format: 'YYYY-MM-DD HH:MM:SS',
-        icons: { time: 'far fa-clock' } 
+        format: 'YYYY-MM-DD HH:mm:ss',
+        icons: { time: 'far fa-clock' },
+        useSeconds: false  // Ensure seconds are not allowed beyond 59
     });
 }
   )

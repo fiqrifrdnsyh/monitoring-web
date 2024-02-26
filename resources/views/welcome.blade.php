@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/ekko-lightbox/ekko-lightbox.css') }}">
+
     <style>
         body {
             background-image: url("/foto/yogya_group.png");
@@ -288,7 +290,9 @@
                                     <td>{{ date('H:i:s', strtotime($kt->tanggal_waktu)) }}</td>
                                     <td>
                                         @if($kt->ss)
-                                            <img src="{{ asset('pictures/'.$kt->ss) }}" alt="Picture" style="max-width: 100px; max-height: 100px;">
+                                            <!-- <img src="{{ asset('images/'.$kt->ss) }}" alt="Picture" style="max-width: 100px; max-height: 100px;" data-toggle="lightbox" class="img-fluid mb-2"> -->
+                                            <a href="{{ asset('images/'.$kt->ss) }}" data-toggle="lightbox" data-title="{{$kt->ss}}"> <img src="{{ asset('images/'.$kt->ss) }}" class="img-fluid mb-2" alt="white sample">
+                                            </a>
                                         @else
                                             No picture available
                                         @endif
@@ -342,6 +346,10 @@
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/ekko-lightbox/ekko-lightbox.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/filterizr/jquery.filterizr.min.js') }}"></script>
+    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
     <!-- AdminLTE App -->
 
     <script>
@@ -534,6 +542,18 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+            $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
 
         })
     </script>
